@@ -1,0 +1,176 @@
+import React from "react";
+import Fade from "react-reveal/Fade";
+
+const checkUrls = (obj) => {
+  switch (obj.name) {
+    case "github":
+      return `https://github.com/${obj.userName}`;
+    case "twitter":
+      return `https://twitter.com/${obj.userName}`;
+    case "linkedin":
+      return `https://www.linkedin.com/in/${obj.userName}`;
+    case "medium":
+      return `https://www.medium.com/${obj.userName}`;
+    default:
+      return null;
+  }
+};
+
+export default ({
+  Config: {
+    GITHUB_USER_NAME,
+    NAME,
+    ROLE,
+    EMAIL,
+    TECH_STACK,
+    SOCIAL_MEDIA,
+    LOCATION,
+  },
+}) => {
+  return (
+    <Fade duration={2000}>
+      <div className="profile">
+        <img
+          src={`https://avatars1.githubusercontent.com/${GITHUB_USER_NAME}`}
+        />
+        <div className="info">
+          <h3>{NAME}</h3>
+          <p className="location">
+            <i
+              className="fas fa-map-marker-alt"
+              style={{ padding: "0 10px 0 5px" }}
+            ></i>
+            {`${LOCATION.state}, ${LOCATION.country}`}
+          </p>
+          <p className="email">
+            <i className="fas fa-envelope space"></i> {EMAIL}
+          </p>
+          <p>
+            <i className="fas fa-briefcase space"></i>
+            {ROLE}
+          </p>
+
+          <div className="tech-stack">
+            {TECH_STACK.map((i) => (
+              <p>
+                <span className="dot"></span> {i}
+              </p>
+            ))}
+          </div>
+
+         
+        </div>
+
+        <ul className="social">
+          {SOCIAL_MEDIA.map((i) => (
+            <li>
+              <a href={checkUrls(i)} target="blank">
+                <i className={`fab fa-${i.name}`}></i>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <style jsx>{`
+        .profile {
+          position: fixed;
+          z-index: 1;
+          padding: 7px;
+          font-size: 0.9rem;
+          text-align: center;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 30px 60px;
+          background: #fff;
+          width: 250px;
+          height: auto;
+          border-radius: 10px;
+        }
+        .tech-stack {
+          text-align: left;
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .dev-badge {
+          height: 30px;
+          padding: 10px 0 0 0;
+        }
+
+        .space {
+          padding: 0 5px;
+        }
+
+        .location > i {
+          color: #000;
+        }
+        .email > i {
+          color: #000;
+        }
+        .tech-stack > p {
+          margin: 10px 5px;
+          padding: 5px 10px;
+          border-radius: 20px;
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          background: #fdfdfd;
+        }
+        .dot {
+          height: 10px;
+          width: 10px;
+          background-color: #342ead;
+          border-radius: 50%;
+          display: inline-block;
+          margin-right: 10px;
+        }
+        img {
+          height: 180px;
+          border-radius: 10px;
+        }
+        .social {
+          list-style: none;
+          padding: 0;
+          margin-top: 0;
+        }
+        .social > li {
+          display: inline-block;
+          margin-right: 10px;
+          background: #40bad5;
+          padding: 8px 10px;
+          border-radius: 50%;
+          box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);
+        }
+        .social > li > a {
+          color: #fff;
+        }
+        .info {
+          text-align: left;
+          padding: 10px;
+        }
+        @media (max-width: 800px) {
+          .profile {
+            position: relative;
+            z-index: 0;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+          }
+          img {
+            height: 120px;
+            float: left;
+            padding: 10px;
+          }
+          .info {
+            text-align: left;
+            padding: 0;
+            margin: 0;
+          }
+          .info > h3 {
+            margin-top: 6px;
+          }
+          .social {
+            padding-bottom: 20px;
+          }
+        }
+      `}</style>
+    </Fade>
+  );
+};
