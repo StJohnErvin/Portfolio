@@ -2,7 +2,7 @@
  A Minimal Portolfio Template :rocket:
 </h1>
 <p align="center">
-  A minimal one page portfolio template built with <a href="https://www.nextjs.org/" target="_blank">Nextjs</a> and hosted on <a href="https://vercel.com/" target="_blank">Vercel</a>
+  A minimal one page portfolio  built with <a href="https://www.nextjs.org/" target="_blank">Nextjs</a> and hosted on <a href="https://vercel.com/" target="_blank">Vercel</a>
 </p>
 
 
